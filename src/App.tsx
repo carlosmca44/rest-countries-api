@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Countries from "./Components/Countries";
-import CountryDescription from "./Components/CountryDescription";
+import Countries from "./components/Countries";
+import CountryDescription from "./components/CountryDescription";
 
 const App: React.FC = () => {
   return (
