@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 import Card from "./Card";
 import Filter from "./Filter";
@@ -28,12 +29,12 @@ const Countries: React.FC = () => {
   let results = [];
   if (!search && filters === "All") {
     results = countries;
-  } else if (search && filters === "All"){
-    results = countries.filter(
-      (data) =>
-        data["name"]["common"]
-          .toLocaleLowerCase()
-          .includes(search.toLocaleLowerCase()))
+  } else if (search && filters === "All") {
+    results = countries.filter((data) =>
+      data["name"]["common"]
+        .toLocaleLowerCase()
+        .includes(search.toLocaleLowerCase())
+    );
   } else {
     results = countries.filter(
       (data) =>
@@ -65,14 +66,19 @@ const Countries: React.FC = () => {
       <div className="grid-container">
         {results.map((item: any, key: any) => {
           return (
-            <Card
+            <Link
               key={key}
-              img={item.flags.png}
-              name={item.name.common}
-              population={item.population}
-              region={item.region}
-              capital={item.capital}
-            />
+              className="link-to"
+              to={`/description/${item.name.official}`}
+            >
+              <Card
+                img={item.flags.png}
+                name={item.name.common}
+                population={item.population}
+                region={item.region}
+                capital={item.capital}
+              />
+            </Link>
           );
         })}
       </div>

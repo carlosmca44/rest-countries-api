@@ -73,6 +73,7 @@ nav svg {
     border-radius: 5px;
     width: 375px;
     display: flex;
+    align-items: center;
 }
 
 .searcher-container input {
@@ -122,8 +123,9 @@ nav svg {
     padding-bottom: 10px;
 }
 
-.select-filter {
-    margin-top: 20px;
+.link-to {
+    text-decoration: none;
+    color: var(--text-color);
 }
 
 .select-filter select{
@@ -177,6 +179,10 @@ nav svg {
 
     .searcher-container {
         width: 300px;
+    }
+
+    .select-filter {
+        margin-top: 20px;
     }
 }
 
