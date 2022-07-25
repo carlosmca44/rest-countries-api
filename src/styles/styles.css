@@ -154,6 +154,84 @@ nav svg {
     gap: 70px;
 }
 
+.country-name {
+    font-size: 2em;
+}
+
+.description-container {
+    display: flex;
+    flex-direction: column;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+
+.country-info-root {
+    padding: 5px 60px;
+}
+
+.country-descriptions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 90px;
+}
+
+.flag-size {
+    width: 600px;
+    height: 400px;
+}
+
+.flex {
+    display: flex;
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    background-color: var(--background-elements);
+    box-shadow: 4px 4px 10px var(--shadow-elements);
+    padding: 7px 40px;
+    border-radius: 7px;
+    width: 70px;
+}
+
+.back-button:hover {
+    cursor: default;
+}
+
+.mt-80 {
+    margin-top: 80px;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn {
+    background-color: var(--background-elements);
+    box-shadow: 4px 4px 10px var(--shadow-elements);
+    padding: 7px 40px;
+    border-radius: 7px;
+    width: 70px;
+}
+
+.btn:hover {
+    cursor: default;
+}
+
+.borders-btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+}
+
+.borders-btn {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
 @media (max-width: 376px) {
     nav {
         padding-left: 10px;
@@ -183,6 +261,33 @@ nav svg {
 
     .select-filter {
         margin-top: 20px;
+    }
+
+    .country-descriptions {
+        justify-content: left;
+        gap: 20px;
+    }
+
+    .fr-column {
+        flex-direction: column;
+    }
+
+    .flag-size {
+        width: 300px;
+        height: 200px;
+    }
+
+    .country-info-root {
+        padding: 5px 5px;
+    }
+
+    .description-container {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+
+    .mt-80 {
+        margin-top: 50px;
     }
 }
 

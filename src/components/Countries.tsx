@@ -10,8 +10,6 @@ const Countries: React.FC = () => {
     "https://restcountries.com/v3.1/all"
   );
 
-  const [countries, setCountries] = useState([]);
-
   // Searcher filter
   const [search, setSearch] = useState("");
 
@@ -28,16 +26,16 @@ const Countries: React.FC = () => {
 
   let results = [];
   if (!search && filters === "All") {
-    results = countries;
+    results = data;
   } else if (search && filters === "All") {
-    results = countries.filter((data) =>
+    results = data.filter((data: any) =>
       data["name"]["common"]
         .toLocaleLowerCase()
         .includes(search.toLocaleLowerCase())
     );
   } else {
-    results = countries.filter(
-      (data) =>
+    results = data.filter(
+      (data: any) =>
         data["name"]["common"]
           .toLocaleLowerCase()
           .includes(search.toLocaleLowerCase()) &&
@@ -45,8 +43,13 @@ const Countries: React.FC = () => {
     );
   }
 
+  let cc: any = {};
   useEffect(() => {
-    setCountries(data);
+    data.map((item: any, _key: any) => {
+      return (cc[item.cca3] = item.name.common);
+    });
+
+    localStorage.setItem("cca3", JSON.stringify(cc));
   }, [data]);
 
   if (loading) {

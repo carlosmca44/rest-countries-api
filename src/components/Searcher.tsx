@@ -2,8 +2,8 @@ import React, { ChangeEventHandler } from "react";
 import SearchIcon from "./svg/SearchIcon";
 
 type SearcherProps = {
-  value?: string;
-  onChange?: ChangeEventHandler<HTMLInputElement>;
+  value: string;
+  onChange: ChangeEventHandler<HTMLInputElement>;
 };
 
 const Searcher: React.FC<SearcherProps> = ({ value, onChange }) => {

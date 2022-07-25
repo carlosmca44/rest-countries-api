@@ -1,4 +1,4 @@
-import { SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const useFetch = (url: string) => {
     const [data, setData] = useState([])
@@ -12,7 +12,7 @@ const useFetch = (url: string) => {
                 let data = await res.json()
                 setData(data)
                 setLoading(false)
-            } catch (error: SetStateAction<any>) {
+            } catch (error: any) {
                 setLoading(false)
                 setError(error)
             }

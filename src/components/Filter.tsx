@@ -1,8 +1,8 @@
 import React, { ChangeEventHandler } from "react";
 
 type FilterProps = {
-  values?: string;
-  onChange?: ChangeEventHandler<HTMLSelectElement>;
+  values: string;
+  onChange: ChangeEventHandler<HTMLSelectElement>;
 };
 
 const Filter: React.FC<FilterProps> = ({ values, onChange }) => {
