@@ -1,34 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Link, useParams } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import useGetDataCountry from "../hooks/useGetDataCountry";
 import LeftArrow from "./svg/LeftArrow";
 
 const CountryDescription: React.FC = () => {
   const { countryParam } = useParams();
 
-  const { data, loading, error } = useFetch(
-    `https://restcountries.com/v3.1/name/${countryParam}`
-  );
-
-  const [borders, setBorders] = useState([]);
-
-  let bord: [] = [];
-  let simpbord: any = [];
-
-  const cca3: any = localStorage.getItem("cca3");
-  const cca3List: [] = JSON.parse(cca3);
-
-  useEffect(() => {
-    if (data[0]) {
-      if (data[0]["borders"]) {
-        simpbord.push(data[0]["borders"]);
-        simpbord[0].map((item: any, _key: any) => {
-          return bord.push(cca3List[item]);
-        });
-        setBorders(bord);
-      }
-    }
-  }, [data]);
+  const { data, loading, error, borders } = useGetDataCountry(countryParam);
 
   if (loading) return <>Loading text</>;
 
@@ -54,6 +32,11 @@ const CountryDescription: React.FC = () => {
               <div className="description-s1">
                 <p>
                   <b className="sub-header">Native Name: </b>
+                  {
+                    data[0]["name"]["nativeName"][
+                      Object.keys(data[0]["name"]["nativeName"])[0]
+                    ]["common"]
+                  }
                 </p>
                 <p>
                   <b className="sub-header">Population: </b>
@@ -80,9 +63,15 @@ const CountryDescription: React.FC = () => {
                 </p>
                 <p>
                   <b className="sub-header">Currencies: </b>
+                  {
+                    data[0]["currencies"][
+                      Object.keys(data[0]["currencies"])[0]
+                    ]["name"]
+                  }
                 </p>
                 <p>
                   <b className="sub-header">Languages: </b>
+                  {data[0]["languages"][Object.keys(data[0]["languages"])[0]]}
                 </p>
               </div>
             </div>
@@ -92,7 +81,11 @@ const CountryDescription: React.FC = () => {
               <div className="borders-btn">
                 {borders.map((item: any, key: any) => {
                   return (
-                    <Link className="btn link-to" to={`/description/${item}`}>
+                    <Link
+                      key={key}
+                      className="btn link-to"
+                      to={`/description/${item}`}
+                    >
                       {item}
                     </Link>
                   );
