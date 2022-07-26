@@ -8,7 +8,7 @@ type FilterProps = {
 const Filter: React.FC<FilterProps> = ({ values, onChange }) => {
   return (
     <div className="select-filter">
-      <select value={values} onChange={onChange}>
+      <select aria-label="select-filter" value={values} onChange={onChange}>
         <option>All</option>
         <option>Africa</option>
         <option>Americas</option>
